@@ -26,11 +26,12 @@ export default class App extends Component {
     searchQuery: '',
     pageNumber: 1,
     srcModal: '',
+    alt: '',
   };
 
   componentDidUpdate(prevProps, prevState) {
-    const { images } = this.state;
-    if (prevState.images !== images) {
+    const { images, pageNumber } = this.state;
+    if (prevState.images !== images && prevState.pageNumber !== pageNumber) {
       window.scrollTo({
         top: document.documentElement.scrollHeight,
         behavior: 'smooth',
@@ -65,12 +66,12 @@ export default class App extends Component {
       .finally(() => this.setState({ isFetching: false }));
   };
 
-  openModal = srcModal => {
-    this.setState({ isOpenModal: true, srcModal });
+  openModal = (srcModal, alt) => {
+    this.setState({ isOpenModal: true, srcModal, alt });
   };
 
   render() {
-    const { isFetching, isOpenModal, images, srcModal } = this.state;
+    const { isFetching, isOpenModal, images, srcModal, alt } = this.state;
 
     return (
       <div className={s.App}>
@@ -78,7 +79,9 @@ export default class App extends Component {
         <ImageGallery images={images} openModal={this.openModal} />
         {images.length > 0 && <Button handleClick={this.handleClick} />}
         {isFetching && <Loader />}
-        {isOpenModal && <Modal onClose={this.onClose} srcModal={srcModal} />}
+        {isOpenModal && (
+          <Modal onClose={this.onClose} srcModal={srcModal} alt={alt} />
+        )}
       </div>
     );
   }

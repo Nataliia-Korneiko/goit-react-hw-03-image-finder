@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import s from './ImageGalleryItem.module.css';
 
 const ImageGalleryItem = ({ src, alt, openModal, srcModal }) => (
-  <li onClick={() => openModal(srcModal)} className={s.ImageGalleryItem}>
+  <li onClick={() => openModal(srcModal, alt)} className={s.ImageGalleryItem}>
     <img src={src} alt={alt} className={s.ImageGalleryItemImage} />
   </li>
 );
