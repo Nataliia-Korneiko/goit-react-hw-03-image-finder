@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://Nataliia-Korneiko.github.io/goit-react-hw-03-image-finder",
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "gh-pages": "^2.1.1",
     "prop-types": "^15.7.2",
     "react": "^16.11.0",
